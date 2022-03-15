@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add User</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput placeholder="Enter your Name">
+            <mat-error *ngIf="userForm.get('name')?.hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Id</mat-label>
+            <input formControlName="id" matInput placeholder="Enter Id">
+            <mat-error *ngIf="userForm.get('id')?.hasError('required')">
+                Id is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter your Email">
+            <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+                Enter in <strong>correct</strong> format
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input formControlName="username" matInput placeholder="Enter your UserName">
+            <mat-error *ngIf="userForm.get('username')?.hasError('required')">
+                User name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    
+
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="addUser()">{{actionbtn}}</button>
+
+</div>

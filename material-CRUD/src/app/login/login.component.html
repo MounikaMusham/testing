@@ -1,0 +1,58 @@
+
+<div>
+
+    <h1>Login Form</h1>
+    <form class="example-form" [formGroup]="loginForm">
+
+        <mat-form-field class="example-full-width" appearance="fill" id="first">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter your Name" formControlName="name" id="nameElement">
+            <mat-error *ngIf="loginForm.get('name')?.hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('name')?.hasError('minlength')">
+                Enter Atleast <strong>Three</strong> Characters
+            </mat-error>
+
+            
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Enter your Email" formControlName="email">
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                    Enter in <strong>correct format</strong>
+                </mat-error>
+          </mat-form-field>
+   
+          <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="passwordType"  placeholder="Enter your Password" formControlName="password">
+                <mat-icon matSuffix (click)="togglePassword()">{{passwordShown == true ?'visibility_off':'visibility'}}</mat-icon>
+
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                    Enter Atleast <strong>Five</strong> Characters
+                </mat-error>
+
+          </mat-form-field>
+
+</form>
+<button mat-raised-button color="primary" (click)="login()"  [disabled]="loginForm.invalid" id="log"> login</button>
+</div>
+
+
+   
+
+
+
+
+
+
